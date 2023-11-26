@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <changeSet id="fireAlarm-1" author="mosmanis" context="1">
+        <createTable tableName="alarm_message">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="apartment" type="INT"/>
+            <column name="is_fire_department_called" type="BIT(1)"/>
+            <column name="comment" type="VARCHAR(255)"/>
+            <column name="sent_at" type="VARCHAR(50)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
