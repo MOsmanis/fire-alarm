@@ -1,3 +1,4 @@
 server/.idea
+client/dist
 client/node_modules
 .DS_Store
