@@ -1,8 +1,12 @@
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+  margin-top: 1rem;
+  padding: 10px;
+} 
+
+#root a {
+  font-size: 13px;
 } 
 
 :root {
@@ -43,8 +47,8 @@ h1 {
 }
 
 #board {
-  font-size:20px;
-  width: 30rem;
+  font-size: 15px;
+  width: auto;
 }
 
 #board button {
@@ -73,8 +77,18 @@ h1 {
   opacity: 0.3;
 }
 
-#messages {
-  place-items: center;
+@media (min-width: 600px){
+  #board {
+    width: 30rem;
+  }
+  #root {
+    width:  100vw;
+    text-align: center;
+  } 
+
+  #messages {
+    width:  30rem;
+  }
 }
 
 #messages .toast {
