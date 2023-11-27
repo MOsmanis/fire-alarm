@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
 import { useState } from 'react'
+import { Spinner } from 'react-bootstrap'
 
 export interface NewMessage {
   isFireDepartmentCalled: boolean,
@@ -17,6 +18,7 @@ function App() {
   const [submitStatus, setSubmitStatus] = useState("")
   const [submitStatusType, setSubmitStatusType] = useState("success")
   const [message, setMessage] = useState<NewMessage>({isFireDepartmentCalled: false, apartment: 1, comment: ""})
+  const [loading, setLoading] = useState(false)
 
   const handleApartmentBlur = (e: any) => {
     if(e.currentTarget.value>maxApartment) {
@@ -46,6 +48,7 @@ function App() {
     setSubmitStatus("");
     event.preventDefault();
     if(validateMessage()) {
+      setLoading(true)
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -53,6 +56,7 @@ function App() {
       };
       fetch('http://localhost:8080/submit', requestOptions)
       .then(response => {
+        setLoading(false)
         if(response.ok) {
           setSubmitStatusType("success");
           setSubmitStatus("Message sent!");
@@ -76,10 +80,13 @@ function App() {
           <a href="https://latvija.lv/en/DzivesSituacijas/tiesibu-aizsardziba/Personas_drosiba#show2">More about the emergency services in Latvia</a>
           </p>
           <p>
-          Apartments on the 1st and 2nd floors have very sensitive smoke detectors that can trigger an alarm for the whole building even from a humidifier. Even so, safety is the top priority
+          Apartments on the 1st and 2nd floors have very sensitive smoke detectors that can trigger an alarm for the whole building even from a humidifier. Even so, safety is the top priority.
           </p>
           <p>
-          If You are certain that it is only a false alarm, please send a message below. There are homeowners who are often present and would like to help, some owners can check where the alarm originated. The alarm has lasted for multiple hours before, so it is also in the interest of residents to better understand the situation
+          If you are certain that it is only a false alarm, please send a message below. There are homeowners who are often present and would like to help, some owners can check where the alarm originated. 
+          </p>
+          <p>
+          The alarm has lasted for multiple hours before, so it is also in the interest of residents to better understand the situation.
           </p>
         </Col>
       </Row>
@@ -119,7 +126,15 @@ function App() {
             {submitStatus}
           </Alert>
           <Button variant="primary" type="submit">
-            Submit
+              <Spinner 
+              hidden={!loading}
+              as="span"
+              animation="border"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+            />
+            <div hidden={loading}>Submit</div>
           </Button>
           <Alert key="warning" variant="warning" >
             This web page is only informational and does not represent any official authorities. It was made by one of the residents as a way to inform foreigners and provide a way to reach out to the local community
