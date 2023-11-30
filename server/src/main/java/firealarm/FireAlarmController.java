@@ -13,7 +13,6 @@ import java.util.List;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
-@CrossOrigin(origins="http://localhost:5173")
 @RestController
 public class FireAlarmController {
     private final AlarmMessageDao alarmMessageDao;
