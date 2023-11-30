@@ -69,7 +69,7 @@ h1 {
   margin-bottom: 0rem;
 }
 
-#board .alert-warning {
+.alert-warning {
   font-size: 14px;
 }
 
@@ -87,7 +87,7 @@ h1 {
   } 
 
   #messages {
-    width:  30rem;
+    width:  350px;
   }
 }
 

@@ -19,16 +19,3 @@ services:
     depends_on:
       - mysql
     restart: on-failure
-
-  client:
-    image: node:alpine
-    container_name: vite_docker
-    entrypoint: /bin/sh
-    ports:
-      - 5173:5173
-    working_dir: /srv/app
-    volumes:
-      - type: bind
-        source: ./
-        target: /srv/app
-    tty: true

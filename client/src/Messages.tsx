@@ -1,6 +1,8 @@
 import Container from "react-bootstrap/Container"
 import Toast from "react-bootstrap/Toast"
 import { useEffect, useState } from "react"
+import Alert from "react-bootstrap/Alert"
+
 
 
 export interface Message {
@@ -28,10 +30,13 @@ const Messages = () => {
     }
     useEffect(() => {
         getMessages();
-    })
+    }, [])
 
     return(
-        <Container fluid id="messages">
+            <Container fluid id="messages">
+            <Alert key="warning" variant="warning" >
+              Caution: These messages are anonymous and can be easily faked. In the event of a fire alarm, follow standard procedures and use information posted here responsibly.
+            </Alert>
             {messages.map((msg: Message) => { return(
                 <Toast key={msg.id}>
                 <Toast.Header closeButton={false}>
