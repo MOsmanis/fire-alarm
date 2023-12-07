@@ -6,6 +6,8 @@ This web app informs foreigners about what to do during a fire alarm and allows 
 
 Feel free to change the text and re-use it for similar situations
 
+https://github.com/MOsmanis/fire-alarm/assets/19804023/99738b38-3f7e-4128-9a59-b243a6b8f5c3
+
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)
